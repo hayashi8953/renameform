@@ -13,6 +13,11 @@ namespace renameform
 {
     public partial class FormConfirm : Form
     {
+        
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="pairs"></param>
         public FormConfirm(ICollection<string[]> pairs)
         {
             InitializeComponent();
@@ -20,17 +25,33 @@ namespace renameform
         }
         public bool confirmThis = false;
 
+
+        /// <summary>
+        /// キャンセルボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btCancel_Click(object sender, EventArgs e)
         {
             confirmThis = false;
             this.Hide();
         }
 
+        /// <summary>
+        /// OKボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btOk_Click(object sender, EventArgs e)
         {
             confirmThis = true;
             this.Hide();
         }
+
+        /// <summary>
+        /// Listの中の要素を表示する
+        /// </summary>
+        /// <param name="pairs"></param>
         private void AddBtText(ICollection<string[]> pairs)
         {
             try
@@ -49,7 +70,7 @@ namespace renameform
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
-                throw new Exception("Form1AddBtText error");
+                throw;
             }
         }
     }

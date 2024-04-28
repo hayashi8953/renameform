@@ -12,6 +12,10 @@ namespace renameform.RenameOption
 {
     public partial class OptionForm : Form
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="ob"></param>
         public OptionForm(OptionBool ob)
         {
             optionFormBool = ob;
@@ -21,11 +25,30 @@ namespace renameform.RenameOption
         }
         public OptionBool optionFormBool = new OptionBool();
 
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 決定ボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btDisition_Click(object sender, EventArgs e)
         {
             SetBool();
             this.Hide();
         }
+
+        /// <summary>
+        /// キャンセルボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        /// <summary>
+        /// 選択したオプションをOptionBoolクラスにsetする
+        /// </summary>
         private void SetBool()
         {
             optionFormBool.AddFront = rbAddFront.Checked ? true : false;
@@ -35,9 +58,6 @@ namespace renameform.RenameOption
             optionFormBool.AddInteger = cbInteger.Checked ? true : false;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
     }
 }

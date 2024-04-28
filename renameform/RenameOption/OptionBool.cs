@@ -8,6 +8,9 @@ namespace renameform.RenameOption
 {
     public class OptionBool
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public OptionBool()
         {
         }
@@ -18,6 +21,10 @@ namespace renameform.RenameOption
         public bool Replace { get; set; } = false;
         public bool AllSame { get; set; } = false;
 
+        /// <summary>
+        /// 要素をToString()する
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

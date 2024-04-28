@@ -18,11 +18,13 @@ using OfficeOpenXml;
 
 namespace renameForm {
     public partial class FormMain : Form {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public FormMain()
         {
             InitializeComponent();
             SetDgvColumnName();
-
         }
 
         private FileInfosManager fileInfosManager = new FileInfosManager();
@@ -31,16 +33,33 @@ namespace renameForm {
         private ExcelManager excelManager = new ExcelManager();
         private int fileCount = 0;
 
+        /// <summary>
+        /// 再起動ボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuRestart_Click(object sender, EventArgs e)
         {
             //  再起動を行う
             Application.Restart();
         }
+
+        /// <summary>
+        /// アプリを閉じるボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuExit_Click(object sender, EventArgs e)
         {
             //  アプリを閉じる
             Application.Exit();
         }
+
+        /// <summary>
+        /// ファイルを追加するボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btAddFile_Clicked(object sender, EventArgs e)
         {
             //  ファイルを取得する
@@ -62,6 +81,7 @@ namespace renameForm {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
                 MessageBox.Show(ex.Message);
+                return;
             }
 
             //  同じファイルがあればMessageBoxで同意を求める
@@ -129,10 +149,16 @@ namespace renameForm {
                     MessageBox.Show(ex.Message + Environment.NewLine +
                         fi.FullName + "でエラーが発生しました。" + Environment.NewLine +
                         "ファイルの追加を中断します");
+                    return;
                 }
             }
         }
 
+        /// <summary>
+        /// ファイルを削除するボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btDeleteFile_Clicked(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dgvMain.SelectedRows)
@@ -153,27 +179,49 @@ namespace renameForm {
                     Debug.WriteLine(ex.Message);
                     Debug.WriteLine(ex.StackTrace);
                     MessageBox.Show(ex.Message);
+                    return;
                 }
 
             }
         }
+
+        /// <summary>
+        /// 並び替えボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btSort_Clicked(object sender, EventArgs e)
         {
-
-            //  列名を取り出す
-            string name = columnName[cbSort.SelectedIndex];
-
-            //  降順チェックを確認して並び替え
-            if (!(cbDescending.Checked))
+            try
             {
-                dgvMain.Sort(dgvMain.Columns[name], ListSortDirection.Ascending);
+                //  列名を取り出す
+                string name = columnName[cbSort.SelectedIndex];
+
+                //  降順チェックを確認して並び替え
+                if (!(cbDescending.Checked))
+                {
+                    dgvMain.Sort(dgvMain.Columns[name], ListSortDirection.Ascending);
+                }
+                else
+                {
+                    dgvMain.Sort(dgvMain.Columns[name], ListSortDirection.Descending);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                dgvMain.Sort(dgvMain.Columns[name], ListSortDirection.Descending);
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+                MessageBox.Show(ex.Message);
             }
+
 
         }
+
+        /// <summary>
+        /// ファイル名をすべて削除するボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btFileNameClear_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("ファイル名をすべて削除する",
@@ -200,6 +248,12 @@ namespace renameForm {
             }
 
         }
+
+        /// <summary>
+        /// ファイル名を最初に戻すボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btFileNameReset_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dgvMain.SelectedRows)
@@ -225,14 +279,36 @@ namespace renameForm {
 
             }
         }
+
+        /// <summary>
+        /// オプションフォームを起動するボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btOption_Click(object sender, EventArgs e)
         {
-            OptionForm of = new OptionForm(optionBool);
-            of.ShowDialog();
-            optionBool = of.optionFormBool;
-            Debug.WriteLine(optionBool.ToString());
-            TcSelect();
+            try
+            {
+                OptionForm of = new OptionForm(optionBool);
+                of.ShowDialog();
+                optionBool = of.optionFormBool;
+                Debug.WriteLine(optionBool.ToString());
+                TcSelect();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+                MessageBox.Show(ex.Message);
+            }
+
         }
+
+        /// <summary>
+        /// 一括変更後のプレビューボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btPreview_Click(object sender, EventArgs e)
         {
 
@@ -306,6 +382,11 @@ namespace renameForm {
             }
         }
 
+        /// <summary>
+        /// 保存先フォルダーの選択ボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btSelectFolder_Clicked(object sender, EventArgs e)
         {
             try
@@ -323,6 +404,12 @@ namespace renameForm {
             }
 
         }
+
+        /// <summary>
+        /// ファイルを上書きで保存するチェック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbOverWriteSave_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -337,6 +424,11 @@ namespace renameForm {
             }
         }
 
+        /// <summary>
+        /// 保存実行ボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btDecision_Click(object sender, EventArgs e)
         {
 
@@ -372,7 +464,7 @@ namespace renameForm {
                     int keyNumber = (int)row.Cells["FileKeyNumber"].Value;
 
                     //  鍵を使って変更前の完全パスと拡張子を取り出す
-                    string fullPath = fileInfosManager.GetFullNameDictionary(keyNumber);
+                    string fullPath = fileInfosManager.GetFileNameDictionary(keyNumber);
                     string extension = fileInfosManager.GetExtensionDictionary(keyNumber);
 
                     //  変更後のディレクトリを求める
@@ -444,9 +536,6 @@ namespace renameForm {
             {
                 if (cbExcel.Checked)
                 {
-                    //  保存作業
-                    //ExcelWorksheet worksheet = excelManager.CreateExcelFile();
-                    //excelManager.WriteExcelFile(pairs, excelManager.CreateExcelFile());
                     excelManager.ExcelAll(pairs);
                 }
 
@@ -455,6 +544,8 @@ namespace renameForm {
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
+                MessageBox.Show("エクセルへの書き込みに失敗しました");
+                return;
             }
 
 
@@ -501,10 +592,13 @@ namespace renameForm {
                     }
                 }
             }
-            MessageBox.Show("変更を終了しました");
+            MessageBox.Show("変更を正常に終了しました");
 
         }
 
+        /// <summary>
+        /// OptionBoolの評価
+        /// </summary>
         private void TcSelect()
         {
 

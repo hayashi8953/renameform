@@ -10,6 +10,9 @@ namespace renameForm
 {
     public class FileInfosManager
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public FileInfosManager()
         {
             fileInfos = new Dictionary<int, FileInfo>();
@@ -17,6 +20,12 @@ namespace renameForm
         public Dictionary<int, FileInfo> fileInfos { get; set; }
         public int DictionaryCount { get; private set; }
 
+        /// <summary>
+        /// 同名のファイルフルネームが存在するかを判定し、そのファイル名を返す
+        /// </summary>
+        /// <param name="files"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public string AnyFileInfo(ICollection<FileInfo> files)
         {
 
@@ -39,9 +48,16 @@ namespace renameForm
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
-                throw new Exception("AnyFileInfo error");
+                throw;
             }
         }
+
+        /// <summary>
+        /// 同名のファイルフルネームが存在するかを判定し、boolを返す
+        /// </summary>
+        /// <param name="fi"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public bool CheckSameFile(FileInfo fi)
         {
 
@@ -57,10 +73,17 @@ namespace renameForm
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
-                throw new Exception("CheckSameFile error");
+                throw;
             }
 
         }
+
+        /// <summary>
+        /// ファイルをディクショナリーに追加する
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="fi"></param>
+        /// <exception cref="Exception"></exception>
         public void AddDictionary(int key, FileInfo fi)
         {
             try
@@ -72,10 +95,16 @@ namespace renameForm
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
-                throw new Exception("AddDictionary error");
+                throw;
             }
 
         }
+
+        /// <summary>
+        /// ディクショナリーから要素を削除する
+        /// </summary>
+        /// <param name="key"></param>
+        /// <exception cref="Exception"></exception>
         public void DeleteElementDictionary(int key)
         {
             try
@@ -91,9 +120,16 @@ namespace renameForm
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
-                throw new Exception("DeleteDictionary error");
+                throw;
             }
         }
+
+        /// <summary>
+        /// 番号からファイルネームを取り出し、その名前を返す
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public string GetFileNameDictionary(int key)
         {
             try
@@ -109,11 +145,18 @@ namespace renameForm
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
-                throw new Exception("GetFileNameDictionary error");
+                throw;
             }
 
 
         }
+
+        /// <summary>
+        /// 番号からファイルが存在するかを確認し、boolを返す
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public bool ContainDictionary(int key)
         {
             try
@@ -128,37 +171,31 @@ namespace renameForm
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
-                throw new Exception("ContainDictionary error");
+                throw;
             }
         }
-        public string GetFullNameDictionary(int key)
-        {
-            try
-            {
-                string fullName = fileInfos[key].FullName;
-                return fullName;
 
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace);
-                throw new Exception("GetFullNameDictionary error");
-            }
-
-        }
+        /// <summary>
+        /// 鍵から拡張子を取り出す
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public string GetExtensionDictionary(int key)
         {
             try
             {
-                string extension = fileInfos[key].Extension;
-                return extension;
+                if (fileInfos.ContainsKey(key))
+                {
+                    string extension = fileInfos[key].Extension;
+                    return extension;
+                }
+                return null;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
-                throw new Exception("GetExtensionDictionary error");
+                throw;
             }
         }
 
