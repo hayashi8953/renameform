@@ -154,7 +154,7 @@ namespace renameForm
         /// <summary>
         /// 番号からファイルフルネームを取り出し、その名前を返す
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">ディクショナリーの鍵</param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
         public string GetFullNameDictionary(int key)
@@ -177,8 +177,8 @@ namespace renameForm
         /// <summary>
         /// 番号からファイルが存在するかを確認し、boolを返す
         /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
+        /// <param name="key">ディクショナリーの鍵</param>
+        /// <returns>存在すればtrue</returns>
         /// <exception cref="Exception"></exception>
         public bool ContainDictionary(int key)
         {

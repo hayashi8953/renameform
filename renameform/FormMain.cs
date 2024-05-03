@@ -124,10 +124,10 @@ namespace renameForm {
                     fileInfosManager.AddDictionary(fileCount, fi);
 
                     //  ファイル名から拡張子を除く
-                    string disExtension = renameUtility.RemoveExtension(fi);
+                    string disExtension = renameUtility.RemoveExtension(fi.Name, fi.Extension);
 
                     //  サイズをkb単位に変換して、三桁ごとに','を入れて単位を付ける
-                    string formattedKbSize = renameUtility.FormattedKbSize(fi);
+                    string formattedKbSize = renameUtility.FormattedKbSize(fi.Length);
 
                     //  作成日時を入れる
                     DateTime creationTime = fi.CreationTime;
@@ -264,10 +264,15 @@ namespace renameForm {
                     int keyNumber = (int)row.Cells["FileKeyNumber"].Value;
 
                     //  鍵を送って元々の名前を貰う
-                    string FileName = fileInfosManager.GetFileNameDictionary(keyNumber);
+                    string fileName = fileInfosManager.GetFileNameDictionary(keyNumber);
+
+                    //  鍵を送って拡張子を貰う
+                    string extention = fileInfosManager.GetExtensionDictionary(keyNumber);
+
+                    string disExtension = renameUtility.RemoveExtension(fileName, extention);
 
                     //  dgvも書き換える
-                    row.Cells["FileName"].Value = FileName;
+                    row.Cells["FileName"].Value = disExtension;
 
                 }
                 catch (Exception ex)
@@ -462,6 +467,13 @@ namespace renameForm {
 
                     //  ファイルの鍵を取り出す
                     int keyNumber = (int)row.Cells["FileKeyNumber"].Value;
+
+                    //  鍵をもとにファイルがディクショナリーに存在するかを確認する
+                    if (!fileInfosManager.ContainDictionary(keyNumber))
+                    {
+                        MessageBox.Show("エラーが発生しました");
+                        return;
+                    }
 
                     //  鍵を使って変更前の完全パスと拡張子を取り出す
                     string fullPath = fileInfosManager.GetFullNameDictionary(keyNumber);
