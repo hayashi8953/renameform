@@ -152,6 +152,29 @@ namespace renameForm
         }
 
         /// <summary>
+        /// 番号からファイルフルネームを取り出し、その名前を返す
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public string GetFullNameDictionary(int key)
+        {
+            try
+            {
+                string fullName = fileInfos[key].FullName;
+                return fullName;
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+                throw new Exception("GetFullNameDictionary error");
+            }
+
+        }
+
+        /// <summary>
         /// 番号からファイルが存在するかを確認し、boolを返す
         /// </summary>
         /// <param name="key"></param>

@@ -464,7 +464,7 @@ namespace renameForm {
                     int keyNumber = (int)row.Cells["FileKeyNumber"].Value;
 
                     //  鍵を使って変更前の完全パスと拡張子を取り出す
-                    string fullPath = fileInfosManager.GetFileNameDictionary(keyNumber);
+                    string fullPath = fileInfosManager.GetFullNameDictionary(keyNumber);
                     string extension = fileInfosManager.GetExtensionDictionary(keyNumber);
 
                     //  変更後のディレクトリを求める
@@ -488,6 +488,13 @@ namespace renameForm {
 
                     //  保存するフォルダーのパスと変更後のファイル名を繋げる
                     string fileDirectoryAndName = Path.Combine(directory, name);
+
+                    //  ファイルが存在するか確認する
+                    if (!File.Exists(fullPath))
+                    {
+                        MessageBox.Show($"{fullPath}が存在しません。保存を中断します");
+                        return;
+                    }
 
                     //  変更前のフルネームと変更後のフルネームを格納していく
                     string[] pair = new string[] { fullPath, fileDirectoryAndName };
@@ -554,11 +561,7 @@ namespace renameForm {
                 string fullPath = paths[0];
                 string fileDirectoryAndName = paths[1];
 
-                if (!File.Exists(fullPath))
-                {
-                    MessageBox.Show($"{fullPath}が存在しません。保存を中断します");
-                    return;
-                }
+
 
                 try
                 {
