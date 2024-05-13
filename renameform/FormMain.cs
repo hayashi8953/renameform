@@ -641,8 +641,6 @@ namespace renameForm {
                 tcOption.SelectedIndex = 3;
             }
         }
-
-
     }
 
 }

@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.メニューToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuRestart = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvMain = new System.Windows.Forms.DataGridView();
-            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FileDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FileKeyNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbFileControl = new System.Windows.Forms.GroupBox();
             this.btAddFile = new System.Windows.Forms.Button();
             this.btDeleteFile = new System.Windows.Forms.Button();
@@ -78,6 +77,10 @@
             this.gbConfirm = new System.Windows.Forms.GroupBox();
             this.cbExcel = new System.Windows.Forms.CheckBox();
             this.btDecision = new System.Windows.Forms.Button();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileKeyNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             this.gbFileControl.SuspendLayout();
@@ -142,42 +145,15 @@
             this.FileKeyNumber});
             this.dgvMain.Location = new System.Drawing.Point(0, 32);
             this.dgvMain.Name = "dgvMain";
-            this.dgvMain.RowTemplate.Height = 21;
-            this.dgvMain.Size = new System.Drawing.Size(697, 388);
+            this.dgvMain.RowTemplate.Height = 30;
+            this.dgvMain.Size = new System.Drawing.Size(865, 440);
             this.dgvMain.TabIndex = 1;
-            // 
-            // FileName
-            // 
-            this.FileName.HeaderText = "ファイル名";
-            this.FileName.Name = "FileName";
-            this.FileName.Width = 350;
-            // 
-            // FileDate
-            // 
-            this.FileDate.HeaderText = "作成日時";
-            this.FileDate.Name = "FileDate";
-            this.FileDate.ReadOnly = true;
-            this.FileDate.Width = 150;
-            // 
-            // FileSize
-            // 
-            this.FileSize.HeaderText = "サイズ";
-            this.FileSize.Name = "FileSize";
-            this.FileSize.ReadOnly = true;
-            this.FileSize.Width = 150;
-            // 
-            // FileKeyNumber
-            // 
-            this.FileKeyNumber.HeaderText = "識別番号";
-            this.FileKeyNumber.Name = "FileKeyNumber";
-            this.FileKeyNumber.ReadOnly = true;
-            this.FileKeyNumber.Visible = false;
             // 
             // gbFileControl
             // 
             this.gbFileControl.Controls.Add(this.btAddFile);
             this.gbFileControl.Controls.Add(this.btDeleteFile);
-            this.gbFileControl.Location = new System.Drawing.Point(0, 426);
+            this.gbFileControl.Location = new System.Drawing.Point(12, 478);
             this.gbFileControl.Name = "gbFileControl";
             this.gbFileControl.Size = new System.Drawing.Size(313, 100);
             this.gbFileControl.TabIndex = 2;
@@ -209,9 +185,9 @@
             this.gbSort.Controls.Add(this.cbSort);
             this.gbSort.Controls.Add(this.cbDescending);
             this.gbSort.Controls.Add(this.btSort);
-            this.gbSort.Location = new System.Drawing.Point(319, 426);
+            this.gbSort.Location = new System.Drawing.Point(331, 478);
             this.gbSort.Name = "gbSort";
-            this.gbSort.Size = new System.Drawing.Size(375, 100);
+            this.gbSort.Size = new System.Drawing.Size(375, 66);
             this.gbSort.TabIndex = 0;
             this.gbSort.TabStop = false;
             this.gbSort.Text = "ファイルの並び替え";
@@ -225,7 +201,7 @@
             "昇順：ファイル名",
             "昇順：作成日時",
             "昇順：サイズ"});
-            this.cbSort.Location = new System.Drawing.Point(6, 41);
+            this.cbSort.Location = new System.Drawing.Point(6, 18);
             this.cbSort.Name = "cbSort";
             this.cbSort.Size = new System.Drawing.Size(187, 32);
             this.cbSort.TabIndex = 1;
@@ -234,7 +210,7 @@
             // 
             this.cbDescending.AutoSize = true;
             this.cbDescending.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cbDescending.Location = new System.Drawing.Point(199, 48);
+            this.cbDescending.Location = new System.Drawing.Point(199, 25);
             this.cbDescending.Name = "cbDescending";
             this.cbDescending.Size = new System.Drawing.Size(66, 23);
             this.cbDescending.TabIndex = 6;
@@ -244,7 +220,7 @@
             // btSort
             // 
             this.btSort.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btSort.Location = new System.Drawing.Point(271, 37);
+            this.btSort.Location = new System.Drawing.Point(271, 18);
             this.btSort.Name = "btSort";
             this.btSort.Size = new System.Drawing.Size(92, 42);
             this.btSort.TabIndex = 5;
@@ -257,9 +233,9 @@
             this.gbOption.Controls.Add(this.tcOption);
             this.gbOption.Controls.Add(this.btOption);
             this.gbOption.Controls.Add(this.btPreview);
-            this.gbOption.Location = new System.Drawing.Point(703, 32);
+            this.gbOption.Location = new System.Drawing.Point(871, 84);
             this.gbOption.Name = "gbOption";
-            this.gbOption.Size = new System.Drawing.Size(549, 388);
+            this.gbOption.Size = new System.Drawing.Size(386, 388);
             this.gbOption.TabIndex = 0;
             this.gbOption.TabStop = false;
             this.gbOption.Text = "変更詳細";
@@ -273,7 +249,7 @@
             this.tcOption.Location = new System.Drawing.Point(6, 18);
             this.tcOption.Name = "tcOption";
             this.tcOption.SelectedIndex = 0;
-            this.tcOption.Size = new System.Drawing.Size(287, 267);
+            this.tcOption.Size = new System.Drawing.Size(281, 267);
             this.tcOption.TabIndex = 3;
             // 
             // tabPage1
@@ -282,7 +258,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(279, 241);
+            this.tabPage1.Size = new System.Drawing.Size(273, 241);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -485,7 +461,7 @@
             // 
             // btOption
             // 
-            this.btOption.Location = new System.Drawing.Point(6, 291);
+            this.btOption.Location = new System.Drawing.Point(10, 291);
             this.btOption.Name = "btOption";
             this.btOption.Size = new System.Drawing.Size(368, 42);
             this.btOption.TabIndex = 1;
@@ -495,9 +471,9 @@
             // 
             // btPreview
             // 
-            this.btPreview.Location = new System.Drawing.Point(0, 339);
+            this.btPreview.Location = new System.Drawing.Point(6, 339);
             this.btPreview.Name = "btPreview";
-            this.btPreview.Size = new System.Drawing.Size(543, 43);
+            this.btPreview.Size = new System.Drawing.Size(368, 43);
             this.btPreview.TabIndex = 0;
             this.btPreview.Text = "変更内容を反映する";
             this.btPreview.UseVisualStyleBackColor = true;
@@ -507,9 +483,9 @@
             // 
             this.gbClear.Controls.Add(this.btFileNameReset);
             this.gbClear.Controls.Add(this.btFileNameClear);
-            this.gbClear.Location = new System.Drawing.Point(12, 532);
+            this.gbClear.Location = new System.Drawing.Point(331, 550);
             this.gbClear.Name = "gbClear";
-            this.gbClear.Size = new System.Drawing.Size(410, 100);
+            this.gbClear.Size = new System.Drawing.Size(375, 100);
             this.gbClear.TabIndex = 0;
             this.gbClear.TabStop = false;
             this.gbClear.Text = "ファイル名の復元と削除";
@@ -539,16 +515,16 @@
             this.gbSelectFolder.Controls.Add(this.btSelectFolder);
             this.gbSelectFolder.Controls.Add(this.cbOverWriteSave);
             this.gbSelectFolder.Controls.Add(this.tbFolderName);
-            this.gbSelectFolder.Location = new System.Drawing.Point(703, 426);
+            this.gbSelectFolder.Location = new System.Drawing.Point(809, 493);
             this.gbSelectFolder.Name = "gbSelectFolder";
-            this.gbSelectFolder.Size = new System.Drawing.Size(549, 94);
+            this.gbSelectFolder.Size = new System.Drawing.Size(447, 94);
             this.gbSelectFolder.TabIndex = 0;
             this.gbSelectFolder.TabStop = false;
             this.gbSelectFolder.Text = "ファイルの保存先";
             // 
             // btSelectFolder
             // 
-            this.btSelectFolder.Location = new System.Drawing.Point(415, 23);
+            this.btSelectFolder.Location = new System.Drawing.Point(352, 27);
             this.btSelectFolder.Name = "btSelectFolder";
             this.btSelectFolder.Size = new System.Drawing.Size(90, 39);
             this.btSelectFolder.TabIndex = 4;
@@ -559,7 +535,7 @@
             // cbOverWriteSave
             // 
             this.cbOverWriteSave.AutoSize = true;
-            this.cbOverWriteSave.Location = new System.Drawing.Point(6, 72);
+            this.cbOverWriteSave.Location = new System.Drawing.Point(6, 63);
             this.cbOverWriteSave.Name = "cbOverWriteSave";
             this.cbOverWriteSave.Size = new System.Drawing.Size(204, 16);
             this.cbOverWriteSave.TabIndex = 3;
@@ -570,19 +546,19 @@
             // tbFolderName
             // 
             this.tbFolderName.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbFolderName.Location = new System.Drawing.Point(6, 27);
+            this.tbFolderName.Location = new System.Drawing.Point(6, 31);
             this.tbFolderName.Name = "tbFolderName";
             this.tbFolderName.ReadOnly = true;
-            this.tbFolderName.Size = new System.Drawing.Size(403, 26);
+            this.tbFolderName.Size = new System.Drawing.Size(340, 26);
             this.tbFolderName.TabIndex = 2;
             // 
             // gbConfirm
             // 
             this.gbConfirm.Controls.Add(this.cbExcel);
             this.gbConfirm.Controls.Add(this.btDecision);
-            this.gbConfirm.Location = new System.Drawing.Point(703, 532);
+            this.gbConfirm.Location = new System.Drawing.Point(809, 586);
             this.gbConfirm.Name = "gbConfirm";
-            this.gbConfirm.Size = new System.Drawing.Size(410, 100);
+            this.gbConfirm.Size = new System.Drawing.Size(448, 82);
             this.gbConfirm.TabIndex = 0;
             this.gbConfirm.TabStop = false;
             this.gbConfirm.Text = "確認";
@@ -599,13 +575,46 @@
             // 
             // btDecision
             // 
-            this.btDecision.Location = new System.Drawing.Point(223, 18);
+            this.btDecision.Location = new System.Drawing.Point(216, 7);
             this.btDecision.Name = "btDecision";
             this.btDecision.Size = new System.Drawing.Size(181, 67);
             this.btDecision.TabIndex = 5;
             this.btDecision.Text = "確定";
             this.btDecision.UseVisualStyleBackColor = true;
             this.btDecision.Click += new System.EventHandler(this.btDecision_Click);
+            // 
+            // FileName
+            // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.FileName.DefaultCellStyle = dataGridViewCellStyle1;
+            this.FileName.HeaderText = "ファイル名";
+            this.FileName.Name = "FileName";
+            this.FileName.Width = 550;
+            // 
+            // FileDate
+            // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.FileDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.FileDate.HeaderText = "作成日時";
+            this.FileDate.Name = "FileDate";
+            this.FileDate.ReadOnly = true;
+            this.FileDate.Width = 150;
+            // 
+            // FileSize
+            // 
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.FileSize.DefaultCellStyle = dataGridViewCellStyle3;
+            this.FileSize.HeaderText = "サイズ";
+            this.FileSize.Name = "FileSize";
+            this.FileSize.ReadOnly = true;
+            this.FileSize.Width = 150;
+            // 
+            // FileKeyNumber
+            // 
+            this.FileKeyNumber.HeaderText = "識別番号";
+            this.FileKeyNumber.Name = "FileKeyNumber";
+            this.FileKeyNumber.ReadOnly = true;
+            this.FileKeyNumber.Visible = false;
             // 
             // FormMain
             // 
@@ -701,10 +710,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btOption;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileKeyNumber;
         private System.Windows.Forms.Button btFileNameReset;
         private System.Windows.Forms.CheckBox cbExcel;
         private System.Windows.Forms.TabControl tcOption;
@@ -712,6 +717,10 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileKeyNumber;
 
         public string[] columnName { get; private set; }
     }
