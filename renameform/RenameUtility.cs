@@ -16,6 +16,10 @@ namespace renameForm
 
         }
 
+        /// <summary>
+        /// ofdからファイルを取り出す
+        /// </summary>
+        /// <returns></returns>
         public List<FileInfo> GetFileInfosOfd()
         {
             List<FileInfo> files = new List<FileInfo>();
@@ -40,9 +44,14 @@ namespace renameForm
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
-                throw new Exception("OpenFileDialog error");
+                throw;
             }
         }
+
+        /// <summary>
+        /// ofdからフォルダー名を取り出す
+        /// </summary>
+        /// <returns></returns>
         public string GetFolderNameOfd()
         {
             try
@@ -65,16 +74,23 @@ namespace renameForm
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
-                throw new Exception("GetFolderName error");
+                throw;
             }
         }
-        public string RemoveExtension(FileInfo fi)
+
+        /// <summary>
+        /// ファイル名から拡張子を除去してファイル名を返す
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="extension"></param>
+        /// <returns></returns>
+        public string RemoveExtension(string fileName, string extension)
         {
 
             try
             {
-                StringBuilder sb = new StringBuilder(fi.Name);
-                sb.Remove(sb.Length - fi.Extension.Length, fi.Extension.Length);
+                StringBuilder sb = new StringBuilder(fileName);
+                sb.Remove(sb.Length - extension.Length, extension.Length);
                 string disExtension = sb.ToString();
                 return disExtension;
             }
@@ -82,14 +98,20 @@ namespace renameForm
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
-                throw new Exception("RemoveExtension error");
+                throw;
             }
         }
-        public string FormattedKbSize(FileInfo fi)
+
+        /// <summary>
+        /// ファイルのサイズをkb単位に変えて返す
+        /// </summary>
+        /// <param name="fi"></param>
+        /// <returns></returns>
+        public string FormattedKbSize(long size)
         {
             try
             {
-                long kbSize = fi.Length / 1024;
+                long kbSize = size / 1024;
                 string formattedKbSize = kbSize.ToString("N0") + "KB";
                 return formattedKbSize;
             }
@@ -97,7 +119,7 @@ namespace renameForm
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
-                throw new Exception("FormattedKbSize error");
+                throw;
             }
         }
 
