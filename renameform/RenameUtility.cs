@@ -11,16 +11,12 @@ namespace renameForm
 {
     public class RenameUtility
     {
-        public RenameUtility()
-        {
-
-        }
 
         /// <summary>
         /// ofdからファイルを取り出す
         /// </summary>
         /// <returns></returns>
-        public List<FileInfo> GetFileInfosOfd()
+        public  static List<FileInfo> GetFileInfosOfd()
         {
             List<FileInfo> files = new List<FileInfo>();
             try
@@ -52,7 +48,7 @@ namespace renameForm
         /// ofdからフォルダー名を取り出す
         /// </summary>
         /// <returns></returns>
-        public string GetFolderNameOfd()
+        public static string GetFolderNameOfd()
         {
             try
             {
@@ -84,7 +80,7 @@ namespace renameForm
         /// <param name="fileName"></param>
         /// <param name="extension"></param>
         /// <returns></returns>
-        public string RemoveExtension(string fileName, string extension)
+        public static string RemoveExtension(string fileName, string extension)
         {
 
             try
@@ -107,7 +103,7 @@ namespace renameForm
         /// </summary>
         /// <param name="fi"></param>
         /// <returns></returns>
-        public string FormattedKbSize(long size)
+        public static string FormattedKbSize(long size)
         {
             try
             {

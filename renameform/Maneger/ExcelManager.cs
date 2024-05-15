@@ -27,7 +27,7 @@ namespace renameform
         /// エクセルに履歴を保存する
         /// </summary>
         /// <param name="pairs"></param>
-        public void ExcelAll(ICollection<string[]> pairs)
+        public static void ExcelAll(ICollection<string[]> pairs)
         {
             DateTime dtNow = DateTime.Now;
             int writeRow = 1;
