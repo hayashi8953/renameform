@@ -25,10 +25,13 @@ namespace renameForm {
         {
             InitializeComponent();
             SetDgvColumnName();
+            fileInfosManager = new FileInfosManager();
+            optionBool = new OptionBool();
+
         }
 
-        private FileInfosManager fileInfosManager = new FileInfosManager();
-        private OptionBool optionBool = new OptionBool();
+        private FileInfosManager fileInfosManager;
+        private OptionBool optionBool;
         private int fileCount = 0;
 
         /// <summary>
@@ -76,8 +79,6 @@ namespace renameForm {
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace);
                 MessageBox.Show(ex.Message);
                 return;
             }
@@ -140,10 +141,8 @@ namespace renameForm {
                     //  識別番号をカウントする
                     fileCount++;
                 }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex.Message);
-                    Debug.WriteLine(ex.StackTrace);
+                catch (Exception ex) { 
+
                     MessageBox.Show(ex.Message + Environment.NewLine +
                         fi.FullName + "でエラーが発生しました。" + Environment.NewLine +
                         "ファイルの追加を中断します");
@@ -174,8 +173,6 @@ namespace renameForm {
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine(ex.Message);
-                    Debug.WriteLine(ex.StackTrace);
                     MessageBox.Show(ex.Message);
                     return;
                 }
@@ -207,12 +204,8 @@ namespace renameForm {
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace);
                 MessageBox.Show(ex.Message);
             }
-
-
         }
 
         /// <summary>
@@ -240,8 +233,6 @@ namespace renameForm {
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace);
                 MessageBox.Show(ex.Message);
             }
 
@@ -275,8 +266,6 @@ namespace renameForm {
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine(ex.Message);
-                    Debug.WriteLine(ex.StackTrace);
                     MessageBox.Show(ex.Message);
                 }
 
@@ -300,8 +289,6 @@ namespace renameForm {
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace);
                 MessageBox.Show(ex.Message);
             }
 
@@ -379,8 +366,6 @@ namespace renameForm {
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace);
                 MessageBox.Show(ex.Message);
             }
         }
@@ -401,8 +386,6 @@ namespace renameForm {
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace);
                 MessageBox.Show(ex.Message);
             }
 
@@ -517,8 +500,6 @@ namespace renameForm {
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace);
                 MessageBox.Show(ex.Message + Environment.NewLine + "ファイルの照合に失敗しました");
                 return;
             }
@@ -543,8 +524,6 @@ namespace renameForm {
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace);
                 MessageBox.Show(ex.Message + Environment.NewLine + "最終確認に失敗しました");
                 return;
             }
@@ -555,12 +534,9 @@ namespace renameForm {
                 {
                    ExcelManager.ExcelAll(pairs);
                 }
-
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace);
                 MessageBox.Show("エクセルへの書き込みに失敗しました");
                 return;
             }
@@ -570,9 +546,6 @@ namespace renameForm {
             {
                 string fullPath = paths[0];
                 string fileDirectoryAndName = paths[1];
-
-
-
                 try
                 {
                     //  保存

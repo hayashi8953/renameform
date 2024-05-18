@@ -33,9 +33,9 @@ namespace renameform
             int writeRow = 1;
             try
             {
-                if (File.Exists(@"Log/RenameAppLog.xlsx"))
+                if (File.Exists(@"RenameAppLog.xlsx"))
                 {
-                    using (ExcelPackage package = new ExcelPackage(@"Log/RenameAppLog.xlsx"))
+                    using (ExcelPackage package = new ExcelPackage(@"RenameAppLog.xlsx"))
                     {
                         ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(dtNow.ToString());
                         package.Save();
@@ -67,7 +67,7 @@ namespace renameform
                             worksheet.Cells[writeRow, 3].Value = pair[1];
                             writeRow++;
                         }
-                        package.SaveAs(@"Log/RenameAppLog.xlsx");
+                        package.SaveAs(@"RenameAppLog.xlsx");
                     }
                 }
             }
