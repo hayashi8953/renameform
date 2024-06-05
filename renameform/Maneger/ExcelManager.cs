@@ -19,7 +19,7 @@ namespace renameform
         /// </summary>
         public ExcelManager() {
 
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
 
         }
 
@@ -29,6 +29,7 @@ namespace renameform
         /// <param name="pairs"></param>
         public static void ExcelAll(ICollection<string[]> pairs)
         {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             DateTime dtNow = DateTime.Now;
             int writeRow = 1;
             try
